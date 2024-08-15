@@ -34,7 +34,7 @@ The architecture consists of a simple frontend application that communicates wit
 #### **Step 1: Clone the Repository**
 1. Open your terminal and run the following command to clone the repository:
    ```bash
-   git clone https://github.com/aws-samples/genai-quickstart-pocs.git
+   git clone https://github.com/awsstudygroup/GenSummit-Elevate-Long-Form-Insights.git
    ```
 2. Navigate to the cloned repository in your preferred code editor. The repo structure includes key files:
    - **Text.py, Chat.py, File.py:** Frontend application files for the corresponding interfaces.
