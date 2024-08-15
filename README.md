@@ -1,6 +1,6 @@
-### **Amazon-Bedrock-Claude3-Long-Form-Output-POC**
+### **GenSummit: Elevate Long-Form Insights**
 
-**Amazon-Bedrock-Claude3-Long-Form-Output-POC** is a demonstration project showcasing the use of Amazon Bedrock and Generative AI to translate text from one language to another. This Proof of Concept (POC) provides users with the ability to generate long-form content, leveraging the Claude 3 model within Amazon Bedrock. The repository includes a basic frontend application, enabling users to quickly set up and test the translation capabilities in various formats, such as plain text, chat, or file-based inputs.
+**GenSummit: Elevate Long-Form Insights** is a demonstration project showcasing the use of Amazon Bedrock and Generative AI to translate text from one language to another. This Proof of Concept (POC) provides users with the ability to generate long-form content, leveraging the Claude 3 model within Amazon Bedrock. The repository includes a basic frontend application, enabling users to quickly set up and test the translation capabilities in various formats, such as plain text, chat, or file-based inputs.
 
 ### **Goal of this Repository:**
 
