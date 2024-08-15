@@ -1,102 +1,78 @@
-# Amazon-Bedrock-Claude3-Long-Form-Output-POC
+### **Amazon-Bedrock-Claude3-Long-Form-Output-POC**
 
-This is sample code demonstrating the use of Amazon Bedrock and Generative AI to translate text from a source to target language.
+**Amazon-Bedrock-Claude3-Long-Form-Output-POC** is a demonstration project showcasing the use of Amazon Bedrock and Generative AI to translate text from one language to another. This Proof of Concept (POC) provides users with the ability to generate long-form content, leveraging the Claude 3 model within Amazon Bedrock. The repository includes a basic frontend application, enabling users to quickly set up and test the translation capabilities in various formats, such as plain text, chat, or file-based inputs.
 
-![Alt text](images/demo.gif)
+### **Goal of this Repository:**
 
-# **Goal of this Repo:**
+The primary goal of this repository is to offer a straightforward way for users to experiment with Amazon Bedrock's capabilities in generating long-form content. By providing a simple frontend interface, users can interact with the application to translate text, assess the fluency and accuracy of the generated content, and easily adapt the code for other use cases or models within Amazon Bedrock.
 
-The goal of this repository is to provide users with the ability to use Amazon Bedrock to generate long form content. This repo comes with a basic frontend to help users stand up a proof of concept in just a few minutes.
+### **Architecture and Flow:**
 
-The architecture and flow of the sample application will be:
+The architecture consists of a simple frontend application that communicates with Amazon Bedrock for translation tasks. Users can interact with the app through three different interfaces:
 
-![Alt text](images/architecture.png "POC Architecture")
+1. **Text Interface:**
+   - Users input a prompt or use a default prompt.
+   - The prompt is sent to Amazon Bedrock for translation.
+   - The translated text is returned and displayed in the frontend.
 
-When a user interacts with the translation app they can choose from 3 interfaces (pages), the flow is as follows for each of the pages:
+2. **Chat Interface:**
+   - Users input a chat-based conversation.
+   - The chat is processed and sent to Amazon Bedrock.
+   - The translated chat content is displayed in the frontend.
 
-Text:
-1. The user either selects the default prompt or inputs a prompt.
-2. The application constructs the appropriate prompt and sends it to Amazon Bedrock.
-3. The appliction recieves and sends the text to Amazon Bedrock for analysis of accuracy and fluency.
-4. The generated text and analysis is displayed on the frontend application.
+3. **File Interface:**
+   - Users upload a text or PDF file for translation.
+   - The file content is sent to Amazon Bedrock.
+   - The translated file content is displayed in the frontend.
 
-File:
-1. The user uploads a text/pdf file and selects the processing type (eg: Tranlsation).
-2. The application constructs the appropriate prompt for the processing and sends it to Amazon Bedrock.
-3. The generated text from the document is displayed on the frontend application.
+### **Step-by-Step Guideline:**
 
-# How to use this Repo:
+#### **Prerequisites:**
+1. **Amazon Bedrock Access and CLI Credentials:** Ensure you have access to Amazon Bedrock and proper FM model access configured in the Amazon Bedrock console.
+2. **Python 3.10 Installation:** Install Python 3.10, as it is the most stable version for the required packages. Download it [here](https://www.python.org/downloads/release/python-3100/).
 
-## Prerequisites:
+#### **Step 1: Clone the Repository**
+1. Open your terminal and run the following command to clone the repository:
+   ```bash
+   git clone https://github.com/aws-samples/genai-quickstart-pocs.git
+   ```
+2. Navigate to the cloned repository in your preferred code editor. The repo structure includes key files:
+   - **Text.py, Chat.py, File.py:** Frontend application files for the corresponding interfaces.
+   - **amazon_bedrock_translation.py:** Contains methods for interacting with Amazon Bedrock.
+   - **requirements.txt:** Lists all the dependencies needed for the project.
 
-1. Amazon Bedrock Access and CLI Credentials. Ensure that the proper FM model access is provided in the Amazon Bedrock console
-2. Ensure Python 3.10 installed on your machine, it is the most stable version of Python for the packages we will be using, it can be downloaded [here](https://www.python.org/downloads/release/python-3100/).
+#### **Step 2: Set Up a Python Virtual Environment**
+1. Install `virtualenv`:
+   ```bash
+   pip install virtualenv
+   ```
+2. Create and activate a virtual environment in the root directory:
+   ```bash
+   python3.10 -m venv venv
+   source venv/bin/activate  # For Linux/MacOS
+   venv\Scripts\activate  # For Windows
+   ```
+3. Install the required packages from `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Step 1:
+#### **Step 3: Configure Environment Variables**
+1. Create a `.env` file in the root directory of the repository.
+2. Add your AWS CLI profile name to the `.env` file:
+   ```bash
+   profile_name=<AWS_CLI_PROFILE_NAME>
+   ```
+3. Ensure your AWS CLI profile has access to Amazon Bedrock. Adjust the region in `prompt_finder_and_invoke_llm.py` (line 23) if needed:
+   ```python
+   bedrock = boto3.client('bedrock-runtime', 'us-east-1', endpoint_url='https://bedrock-runtime.us-east-1.amazonaws.com')
+   ```
 
-The first step of utilizing this repo is performing a git clone of the repository.
+#### **Step 4: Run the Application**
+1. With the environment set up and all dependencies installed, start the application by running:
+   ```bash
+   streamlit run app.py
+   ```
+2. The application will open in your browser. You can now interact with the app to translate text, chats, or files.
 
-```
-git clone https://github.com/aws-samples/genai-quickstart-pocs.git
-```
-
-After cloning the repo onto your local machine, open it up in your favorite code editor.The file structure of this repo is broken into 5 key files,
-the Text.py file, the amazon_bedrock_trnaslation.py file, the Chat.py file, the File.py file, and the requirements.txt file. The Text.py, Chat.py, and File.py files house the frontend application (streamlit app) for their corresponding interface.
-The amazon_bedrock_translation.py file contains methods which govern the interaction with Amazon Bedrock.
-Last, the requirements.txt
-file has all the requirements needed to get the sample application up and running.
-
-## Step 2:
-
-Set up a python virtual environment in the root directory of the repository and ensure that you are using Python 3.9. This can be done by running the following commands:
-
-```
-pip install virtualenv
-python3.10 -m venv venv
-```
-
-The virtual environment will be extremely useful when you begin installing the requirements. If you need more clarification on the creation of the virtual environment please refer to this [blog](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/).
-After the virtual environment is created, ensure that it is activated, following the activation steps of the virtual environment tool you are using. Likely:
-
-```
-cd venv
-cd bin
-source activate
-cd ../../
-```
-
-After your virtual environment has been created and activated, you can install all the requirements found in the requirements.txt file by running this command in the root of this repos directory in your terminal:
-
-```
-pip install -r requirements.txt
-```
-
-## Step 3:
-
-Now that the requirements have been successfully installed in your virtual environment we can begin configuring environment variables.
-You will first need to create a .env file in the root of this repo. Within the .env file you just created you will need to configure the .env to contain:
-
-```
-profile_name=<AWS_CLI_PROFILE_NAME>
-```
-
-Please ensure that your AWS CLI Profile has access to Amazon Bedrock!
-
-Depending on the region and model that you are planning to use Amazon Bedrock in, you may need to reconfigure line 23 in the prompt_finder_and_invoke_llm.py file to set the appropriate region:
-
-```
-bedrock = boto3.client('bedrock-runtime', 'us-east-1', endpoint_url='https://bedrock-runtime.us-east-1.amazonaws.com')
-```
-
-Since this repository is configured to leverage Claude 3, the prompt payload is structured in a different format. If you wanted to leverage other Amazon Bedrock models you can replace the modelId variable to the model of your choice and refer to the Bedrock console for the response format
-
-## Step 4:
-
-As soon as you have successfully cloned the repo, created a virtual environment, activated it, installed the requirements.txt, and created a .env file, your application should be ready to go.
-To start up the application with its basic frontend you simply need to run the following command in your terminal while in the root of the repositories' directory:
-
-```
-streamlit run app.py
-```
-
-Once the application is up and running in your browser, you can begin translating text, chats, or files.
+By following these steps, you can easily set up and explore the capabilities of Amazon Bedrock in generating long-form content with translation tasks using the Claude 3 model.
